@@ -6,8 +6,11 @@ class Signup extends Component {
     super(props)
     this.state = {
       email: "",
-      name: "",
+      firstName: "",
+      lastName: "",
       password: "",
+      city: "Berlin",
+      bootcampName: ""
     }
   }
 
@@ -22,8 +25,11 @@ class Signup extends Component {
     e.preventDefault()
     let data = {
       email: this.state.email,
-      name: this.state.name,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
       password: this.state.password,
+      city: this.state.city,
+      bootcampName: this.state.bootcampName,
     }
     api.signup(data)
       .then(result => {
@@ -37,13 +43,53 @@ class Signup extends Component {
 
   render() {   
     return (
-      <div className="Signup">
+      <div className="Signup container">
         <h2>Signup</h2>
         <form>
-          Email: <input type="text" value={this.state.email} onChange={(e) => {this.handleInputChange("email", e)}} /> <br/>
-          Name: <input type="text" value={this.state.name} onChange={(e) => {this.handleInputChange("name", e)}} /> <br/>
-          Password: <input type="password" value={this.state.password} onChange={(e) => {this.handleInputChange("password", e)}}  /> <br/>
-          <button onClick={(e) => this.handleClick(e)}>Signup</button>
+          <div className="row">
+            <label class="col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-9">
+              <input className="form-control" type="text" value={this.state.email} onChange={(e) => {this.handleInputChange("email", e)}} />
+            </div>
+          </div>
+          <div className="row">
+            <label class="col-sm-3 col-form-label">First name</label>
+            <div class="col-sm-9">
+              <input className="form-control" type="text" value={this.state.firstName} onChange={(e) => {this.handleInputChange("firstName", e)}} />
+            </div>
+          </div>
+          <div className="row">
+            <label class="col-sm-3 col-form-label">Last name</label>
+            <div class="col-sm-9">
+              <input className="form-control" type="text" value={this.state.lastName} onChange={(e) => {this.handleInputChange("lastName", e)}} />
+            </div>
+          </div>
+          <div className="row">
+            <label class="col-sm-3 col-form-label">Password</label>
+            <div class="col-sm-9">
+              <input className="form-control" type="password" value={this.state.password} onChange={(e) => {this.handleInputChange("password", e)}}  />
+            </div>
+          </div>
+          <div className="row">
+            <label class="col-sm-3 col-form-label">City</label>
+            <div class="col-sm-9">
+              <select className="form-control" type="text" value={this.state.city} onChange={(e) => {this.handleInputChange("city", e)}}>
+                <option value="Berlin">Berlin</option>
+              </select>
+            </div>
+          </div>
+          <div className="row">
+            <label class="col-sm-3 col-form-label">Bootcamp</label>
+            <div class="col-sm-9">
+              <select className="form-control" type="text" value={this.state.bootcampName} onChange={(e) => {this.handleInputChange("bootcampName", e)}}>
+                <option value="Full-Time July Bootcamp">Full-Time July Bootcamp</option>
+                <option value="Full-Time October Bootcamp">Full-Time October Bootcamp</option>
+                <option value="Part-Time October Bootcamp">Part-Time October Bootcamp</option>
+                <option value="Full-Time January Bootcamp">Full-Time January Bootcamp</option>
+              </select>
+            </div>
+          </div>
+          <button className="btn btn-success" onClick={(e) => this.handleClick(e)}>Signup</button>
         </form>
       </div>
     );

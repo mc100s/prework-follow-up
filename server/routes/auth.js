@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const Participant = require('../models/participant');
 const jwt = require('jwt-simple');
 const passport = require('passport');
 const config = require('../config');
@@ -8,16 +9,59 @@ const config = require('../config');
 
 router.post('/signup', (req, res, next) => {
   // extract the info we need from the body of the request
-  const { email, name, password } = req.body;
+  const { email, firstName, lastName, password, city, bootcampName } = req.body;
+  console.log('DEBUG { email, firstName, lastName, password, city, bootcampName }', { email, firstName, lastName, password, city, bootcampName });
   const user = new User({
     email,
-    name
+    firstName,
+    lastName,
+    password
   });
 
-  User.register(user, password, err => {
-    if (err) return next(err);
-    res.json({ success: true });
-  });
+  User.register(user, password)
+    .then(docUser => {
+      let initialExercises = [{
+        name: 'GitHub',
+        link: '',
+        status: 'TODO',
+        shortFeedback: ''
+      },{
+        name: 'Ironskydive',
+        link: '',
+        status: 'TODO',
+        shortFeedback: ''
+      },{
+        name: 'NPM Clone (optional)',
+        link: '',
+        status: 'TODO',
+        shortFeedback: ''
+      },{
+        name: 'Mars Rover',
+        link: '',
+        status: 'TODO',
+        shortFeedback: ''
+      }]
+      
+      let initialMessages = [{
+        text: `Hey ${firstName}! Welcome on this PreWork follow-up platform! It was built by your (awesome) teachers so they can easily check your progression through the PreWork.
+You will find at the top of this page a recap of your progression.
+Right below, there is a chat so you can talk to any of your teachers. 
+This platform is not perfect at all, it was built by me in a couple of days.
+The good news is that you would be able to code the same thing in few days by the end of the bootcamp! 
+Good luck with the PreWork!`,
+        date: new Date(),
+      }]
+
+      return Participant.create({
+        _user: docUser._id,
+        bootcampName,
+        city,
+        exercises: initialExercises,
+        messages: initialMessages
+      })
+    })
+    .then(_ => res.json({success: true}))
+    .catch(err => next(err))
 });
 
 router.post('/login', (req, res, next) => {
@@ -53,7 +97,8 @@ router.post('/login', (req, res, next) => {
         const token = jwt.encode(payload, config.jwtSecret);
         res.json({
           token,
-          name: user.name,
+          _id: user.id,
+          isAdmin: user.isAdmin
         });
       }
     });

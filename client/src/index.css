@@ -3,3 +3,62 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.ParticipantProgress table {
+  margin: 0 auto;
+}
+
+.ParticipantProgress .message {
+  width: 90%;
+  text-align: left;
+}
+
+.ParticipantProgress .message .small {
+  font-size: 0.8em;
+}
+
+.ParticipantProgress .message.message-left {
+  /* text-align: left; */
+}
+
+.ParticipantProgress .message.message-right {
+  margin-left: auto;
+  /* text-align: right; */
+}
+
+.ParticipantProgress .message.message-left .small {
+  /* text-align: right; */
+}
+
+.ParticipantProgress .message.message-right .small {
+  /* text-align: left; */
+}
+
+.ParticipantProgress .chat {
+  max-height: 500px;
+  border: 1px solid #ddd;
+  padding: 0 10px;
+
+  overflow: scroll;
+  /* overflow:auto; 
+  display:flex; 
+  flex-direction:column-reverse; */
+}
+
+
+.ParticipantProgress .textarea-message {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.ParticipantProgress .message pre {
+  white-space: pre-wrap;
+}
+
+
+.Signup, .Login, .Home {
+  max-width: 550px;
+}
+
+.Signup form .row, .Login form .row {
+  margin-bottom: 10px;
+}

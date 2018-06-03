@@ -11,12 +11,43 @@ const errHandler = err => {
 
 export default {
   service: service,
+
+  getOneProgression() {
+    return service
+      .get('/one-progression')
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
+  saveExercises(participantId, exercises) {
+    return service
+      .put('/save-exercices', {participantId, exercises})
+  },
+
+  postMessage(participantId, message) {
+    return service
+      .post(`/participants/${participantId}/messages`, message)
+  },
+  
+  getParticipants() {
+    return service
+    .get('participants')
+    .then(res => res.data)
+    .catch(errHandler)
+  },
+
+  getParticipant(participantId) {
+    return service
+      .get(`participants/${participantId}`)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
   
   getCountries() {
     return service
-    .get('/countries')
-    .then(res => res.data)
-    .catch(errHandler);
+      .get('/countries')
+      .then(res => res.data)
+      .catch(errHandler);
   },
 
   postCountries(data) {
@@ -65,7 +96,7 @@ export default {
     const userData = localStorage.getItem('user');
     if (!userData) return false;
     const user = JSON.parse(userData);
-    if (user.token && user.name) {
+    if (user.token) {
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + user.token;
       return user;
     }
@@ -74,5 +105,9 @@ export default {
 
   isLoggedIn() {
     return localStorage.getItem('user') != null
+  },
+
+  isAdmin() {
+    return localStorage.getItem('user') != null && this.loadUser().isAdmin
   }
 };

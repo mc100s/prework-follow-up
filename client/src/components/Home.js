@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import api from '../api';
 
 class Home extends Component {
   // constructor(props) {
@@ -8,9 +10,21 @@ class Home extends Component {
   // }
   render() {                
     return (
-      <div className="Home">
-        <h2>Home</h2>
-        <p>This is a sample project with the MERN stack</p>
+      <div className="Home container">
+        <h2 className="mb-3">Home</h2>
+        <p className="lead">Welcome on this PreWork follow-up platform! It was built by your teachers so they can easily check your progression through the PreWork.</p>
+        <p className="lead">
+          If you have any problem with the platform, please contact
+          <br/>
+          <a href="mailto:maxence@ironhack.com">maxence@ironhack.com</a> by email
+          <br/>
+          or 
+          <br/>
+          <strong>@maxence, @Nacho Lopez, @vivian sarazin</strong> on the Ironhack Slack
+        </p>
+        {api.isLoggedIn() && (
+          <Link to="/prework-progress" className="btn btn-lg btn-primary mt-3">Go to your Prework Progress</Link>
+        )}
       </div>
     );
   }
