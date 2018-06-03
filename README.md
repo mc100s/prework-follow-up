@@ -59,30 +59,6 @@ So now you can go to
 - http://localhost:3000/: The last version of your React application that is calling your API with the base url "http://localhost:3030/api/"
 
 
-## Example in the code
-
-### `server/routes/auth.js`
-
-- `router.post('/signup')`: Route to create a new user
-- `router.post('/login')`: Route to send the user JWT 
-- `router.get('/secret')`: Route where the user need to be authenticated
-
-
-### `server/routes/users.js`
-
-- `router.get('/')`: Route to get all users
-- `router.post('/picture-one-user')`: Route to add a picture on one user with Cloudinary
-
-<!-- TODO: give instructions for Cloudinary -->
-<!-- TODO: give instructions for route guards -->
-
-### `server/routes/countries.js`
-
-- `router.get('/')`: Route to get all countries
-- `router.get('/static-sample')`: Route to get a static sample of countries
-- `router.post('/')`: Route to add a country
-
-
 
 ## Deployement on Heroku
 

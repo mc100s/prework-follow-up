@@ -82,6 +82,8 @@ class ParticipantProgress extends Component {
 
   handleSendMessage(e) {
     e.preventDefault();
+    if (this.state.currentMessageText.trim() === "")
+      return;
     const message = {
       text: this.state.currentMessageText,
     }

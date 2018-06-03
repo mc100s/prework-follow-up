@@ -54,8 +54,8 @@ class App extends Component {
               </ul>
 
 
-              {!api.isLoggedIn() && <Link to="/signup" className="btn btn-light mx-1">Signup</Link>}
-              {!api.isLoggedIn() && <Link to="/login" className="btn btn-light mx-1">Login</Link>}
+              {!api.isLoggedIn() && <Link to="/signup" className="btn btn-light mx-1">Sign up</Link>}
+              {!api.isLoggedIn() && <Link to="/login" className="btn btn-light mx-1">Log in</Link>}
               {api.isLoggedIn() && <Link to="/" className="btn btn-light mx-1" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
             </div>
           </div>

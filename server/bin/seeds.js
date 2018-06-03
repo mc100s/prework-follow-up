@@ -9,7 +9,7 @@ var users = [{
   firstName: 'Maxence', 
   lastName: 'Bouret', 
   email: 'maxence@ironhack.com',
-  password: 'maxence',
+  password: 'ironhackmaxence',
   isAdmin: true
 }, { 
   firstName: 'Alice', 
@@ -37,7 +37,17 @@ let initialExercises = [{
   status: 'TODO',
   shortFeedback: ''
 },{
-  name: 'HTML CSS',
+  name: 'Ironskydive',
+  link: '',
+  status: 'TODO',
+  shortFeedback: ''
+},{
+  name: 'NPM Clone (optional)',
+  link: '',
+  status: 'TODO',
+  shortFeedback: ''
+},{
+  name: 'Mars Rover',
   link: '',
   status: 'TODO',
   shortFeedback: ''

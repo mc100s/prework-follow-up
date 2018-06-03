@@ -10,7 +10,7 @@ class Signup extends Component {
       lastName: "",
       password: "",
       city: "Berlin",
-      bootcampName: ""
+      bootcampName: "Full-Time July Bootcamp"
     }
   }
 

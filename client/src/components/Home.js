@@ -25,6 +25,12 @@ class Home extends Component {
         {api.isLoggedIn() && (
           <Link to="/prework-progress" className="btn btn-lg btn-primary mt-3">Go to your Prework Progress</Link>
         )}
+        {!api.isLoggedIn() && (
+          <div>
+            <Link to="/signup" className="btn btn-lg btn-primary mt-3 mx-2">Sign up</Link>
+            <Link to="/login" className="btn btn-lg btn-primary mt-3 mx-2">Log in</Link>
+          </div>
+        )}
       </div>
     );
   }
